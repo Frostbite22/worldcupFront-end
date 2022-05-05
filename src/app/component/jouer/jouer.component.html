@@ -1,0 +1,41 @@
+
+
+  <h3><a routerLink="/tournoir/detail" *ngIf="adminPermission"> ajouter un jouer</a></h3>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">age</th>
+          <th scope="col">filiere</th>
+          <th scope="col">niveau</th>
+          <th scope="col">nom</th>
+          <th scope="col">numMaillot</th>
+          <th scope="col">poste</th>
+          <th scope="col">prenom</th>
+          <th scope="col">taille</th>
+          <th scope="col">equipe</th>
+          <th scope="col" *ngIf="adminPermission">update</th>
+          <th scope="col" *ngIf="adminPermission">delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let jouer of jouers">
+
+        <tr>
+          <th scope="row">{{jouer.id}}</th>
+          <td>{{jouer.age}}</td>
+          <td>{{jouer.filiere}}</td>
+          <td>{{jouer.niveau}}</td>
+          <td>{{jouer.nom}}</td>
+          <td>{{jouer.numMaillot}}</td>
+          <td>{{jouer.poste}}</td>
+          <td>{{jouer.prenom}}</td>
+          <td>{{jouer.taille}}</td>
+          <td>{{jouer.equipe?.nom}}</td>
+          <td *ngIf="adminPermission"><a routerLink="/jouer/detail/{{jouer.id}}">update</a></td>
+          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteJouer(jouer.id!)">delete</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+<app-equipe></app-equipe>

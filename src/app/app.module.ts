@@ -14,6 +14,16 @@ import { EquipeComponent } from './component/equipe/equipe.component';
 import { GroupeComponent } from './component/groupe/groupe.component';
 import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.component';
 import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
+import { TournoirComponent } from './component/tournoir/tournoir.component';
+import { JouerComponent } from './component/jouer/jouer.component';
+import { ArbitreComponent } from './component/arbitre/arbitre.component';
+import { StadeComponent } from './component/stade/stade.component';
+import { MatchComponent } from './component/match/match.component';
+import { MatchDetailComponent } from './component/match-detail/match-detail.component';
+import { StadeDetailComponent } from './component/stade-detail/stade-detail.component';
+import { ArbitreDetailComponent } from './component/arbitre-detail/arbitre-detail.component';
+import { TournoirDetailComponent } from './component/tournoir-detail/tournoir-detail.component';
+import { JouerDetailComponent } from './component/jouer-detail/jouer-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +34,17 @@ import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.c
     EquipeComponent,
     GroupeComponent,
     EquipeDetailComponent,
-    GroupeDetailComponent
+    GroupeDetailComponent,
+    TournoirComponent,
+    JouerComponent,
+    ArbitreComponent,
+    StadeComponent,
+    MatchComponent,
+    MatchDetailComponent,
+    StadeDetailComponent,
+    ArbitreDetailComponent,
+    TournoirDetailComponent,
+    JouerDetailComponent
   ],
   imports: [
     BrowserModule,

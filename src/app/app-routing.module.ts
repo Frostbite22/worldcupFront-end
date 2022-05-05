@@ -5,6 +5,8 @@ import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.component';
 import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
+import { TournoirComponent } from './component/tournoir/tournoir.component';
+import { JouerComponent } from './component/jouer/jouer.component';
 
 
 
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'equipe/detail/:id', component: EquipeDetailComponent },
   { path: 'groupe/detail', component: GroupeDetailComponent },
   { path: 'groupe/detail/:id', component: GroupeDetailComponent },
+  { path: 'tournoirs', component: TournoirComponent },
+  { path: 'jouers', component: JouerComponent },
 ];
 
 @NgModule({
