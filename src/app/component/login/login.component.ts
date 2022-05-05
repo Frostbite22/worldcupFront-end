@@ -9,7 +9,7 @@ import { TokenStorageService } from '../../service/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  logo = '././assets/worldcup-logo.png'
   form : any = {
     username : null,
     password : null

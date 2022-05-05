@@ -7,7 +7,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  logo = '././assets/worldcup-logo.png'
   form : any = {
     username : null,
     password : null
