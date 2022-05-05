@@ -1,0 +1,45 @@
+<br>
+<div class="container">
+    <div *ngIf="equipe">
+            <form  [formGroup]="equipeForm" (ngSubmit)="saveEquipe()">
+                <div class="form-group row">
+                  <label for="nom" class="col-sm-2 col-form-label">nom</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nom" [(ngModel)]="equipe.nom" formControlName="nom">
+                  </div>
+                </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="groupe">Groupes</label>
+                    </div>
+                    <select  class="custom-select" id="groupe" formControlName="groupe" [(ngModel)]="equipe.groupe">
+                        <option [ngValue]="groupe"
+                        *ngFor="let groupe of groupes"
+                        [selected]="groupe.id == equipe.groupe!.id" >{{groupe.numero}}</option>
+                    </select>
+                  </div>
+
+
+                  <button class="button" type="submit">Save </button>
+
+              </form>
+    </div>
+        <div *ngIf="equipe ==undefined">
+            <form  [formGroup]="equipeForm" (ngSubmit)="addEquipe(nom.value)">
+                <div class="form-group row">
+                <label for="nom" class="col-sm-2 col-form-label">nom</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" #nom id="nom" formControlName="nom">
+                </div>
+                </div>
+
+                <button class="button" type="submit">ajouter une equipe </button>
+
+
+            </form>
+        </div>
+        <br>
+        <br>
+        <button type="button" (click)="goBack()">Go back</button>
+    </div>
+

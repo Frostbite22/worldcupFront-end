@@ -9,12 +9,22 @@ import { LoginComponent } from './component/login/login.component';
 import {authInterceptorProviders } from './_helpers/auth.interceptor';
 import { RegisterComponent } from './component/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './component/home/home.component';
+import { EquipeComponent } from './component/equipe/equipe.component';
+import { GroupeComponent } from './component/groupe/groupe.component';
+import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.component';
+import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    EquipeComponent,
+    GroupeComponent,
+    EquipeDetailComponent,
+    GroupeDetailComponent
   ],
   imports: [
     BrowserModule,

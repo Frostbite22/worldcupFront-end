@@ -1,0 +1,27 @@
+
+  <div *ngIf="adminPermission">
+    <h3><a routerLink="/groupe/detail" *ngIf="adminPermission"> ajouter un groupe</a></h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">id</th>
+            <th scope="col">libelle</th>
+
+            <th scope="col" *ngIf="adminPermission">update</th>
+            <th scope="col" *ngIf="adminPermission">delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let groupe of groupes">
+
+            <tr>
+            <th scope="row">{{groupe.id}}</th>
+            <td>{{groupe.numero}}</td>
+
+            <td><a routerLink="/groupe/detail/{{groupe.id}}">update</a></td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteGroupe(groupe.id!)">delete</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+

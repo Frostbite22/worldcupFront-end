@@ -1,0 +1,28 @@
+
+
+  <h3><a routerLink="/equipe/detail" *ngIf="adminPermission"> ajouter une equipe</a></h3>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nom</th>
+          <th scope="col">groupe</th>
+          <th scope="col" *ngIf="adminPermission">update</th>
+          <th scope="col" *ngIf="adminPermission">delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let equipe of equipes">
+
+        <tr>
+          <th scope="row">{{equipe.id}}</th>
+          <td>{{equipe.nom}}</td>
+          <td>{{equipe.groupe?.numero}}</td>
+          <td *ngIf="adminPermission"><a routerLink="/equipe/detail/{{equipe.id}}">update</a></td>
+          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteEquipe(equipe.id!)">delete</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
