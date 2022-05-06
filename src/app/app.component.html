@@ -14,9 +14,6 @@
       <li class="nav-item" *ngIf="adminPermission">
         <a href="/matchs" class="nav-link" routerLink="matchs">Match</a>
       </li>
-      <li class="nav-item" *ngIf="adminPermission">
-        <a href="/arbitres" class="nav-link" routerLink="arbitres">Arbitre</a>
-      </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
@@ -34,7 +31,7 @@
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ user.login }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile">{{ user.username }}</a>
       </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">LogOut</a>

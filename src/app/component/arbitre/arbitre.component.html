@@ -1,1 +1,32 @@
-<p>arbitre works!</p>
+
+
+  <h3><a routerLink="/arbitre/detail" *ngIf="adminPermission"> ajouter un arbitre</a></h3>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nom</th>
+          <th scope="col">prenom</th>
+          <th scope="col">filiere</th>
+          <th scope="col">niveau</th>
+          <th scope="col">match</th>
+          <th scope="col" *ngIf="adminPermission">update</th>
+          <th scope="col" *ngIf="adminPermission">delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let arbitre of arbitres">
+
+        <tr>
+          <th scope="row">{{arbitre.id}}</th>
+          <td>{{arbitre.nom}}</td>
+          <td>{{arbitre.prenom}}</td>
+          <td>{{arbitre.filiere}}</td>
+          <td>{{arbitre.niveau}}</td>
+          <td>{{arbitre.match?.nomEquipe1}}</td>
+          <td *ngIf="adminPermission"><a routerLink="/arbitre/detail/{{arbitre.id}}">update</a></td>
+          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteArbitre(arbitre.id!)">delete</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+

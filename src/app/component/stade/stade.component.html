@@ -1,1 +1,25 @@
-<p>stade works!</p>
+
+
+  <h3><a routerLink="/stade/detail" *ngIf="adminPermission"> ajouter un stade</a></h3>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nom</th>
+          <th scope="col">localisation</th>
+          <th scope="col" *ngIf="adminPermission">update</th>
+          <th scope="col" *ngIf="adminPermission">delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let stade of stades">
+
+        <tr>
+          <th scope="row">{{stade.id}}</th>
+          <td>{{stade.nom}}</td>
+          <td>{{stade.localisation}}</td>
+          <td *ngIf="adminPermission"><a routerLink="/stade/detail/{{stade.id}}">update</a></td>
+          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteStade(stade.id!)">delete</button></td>
+        </tr>
+
+      </tbody>
+  </table>

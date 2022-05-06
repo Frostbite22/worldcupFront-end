@@ -1,1 +1,35 @@
-<p>match works!</p>
+<h3><a routerLink="/match/detail" *ngIf="adminPermission"> ajouter une match</a></h3>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nomEquipe1</th>
+          <th scope="col">nomEquipe2</th>
+          <th scope="col">resultat</th>
+          <th scope="col">date</th>
+          <th scope="col">groupe</th>
+          <th scope="col">tournoir</th>
+          <th scope="col">stade</th>
+          <th scope="col">equipe</th>
+          <th scope="col" *ngIf="adminPermission">update</th>
+          <th scope="col" *ngIf="adminPermission">delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let match of matchs">
+        <tr>
+          <th scope="row">{{match.id}}</th>
+          <td>{{match.nomEquipe1}}</td>
+          <td>{{match.nomEquipe2}}</td>
+          <td>{{match.resultat}}</td>
+          <td>{{match.date}}</td>
+          <td>{{match.tournoir?.nom}}</td>
+          <td>{{match.stade?.nom}}</td>
+          <td>{{match.equipe?.nom}}</td>
+          <td *ngIf="adminPermission"><a routerLink="/match/detail/{{match.id}}">update</a></td>
+          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteMatch(match.id!)">delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+<app-tournoir></app-tournoir>
+<app-stade></app-stade>
+

@@ -7,6 +7,9 @@ import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.c
 import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
 import { TournoirComponent } from './component/tournoir/tournoir.component';
 import { JouerComponent } from './component/jouer/jouer.component';
+import { MatchComponent } from './component/match/match.component';
+import { ArbitreComponent } from './component/arbitre/arbitre.component';
+import { StadeComponent } from './component/stade/stade.component';
 
 
 
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'groupe/detail/:id', component: GroupeDetailComponent },
   { path: 'tournoirs', component: TournoirComponent },
   { path: 'jouers', component: JouerComponent },
+  { path: 'arbitres', component: ArbitreComponent },
+  { path: 'matchs', component: MatchComponent },
+  { path: 'stades', component: StadeComponent },
 ];
 
 @NgModule({
