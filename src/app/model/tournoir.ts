@@ -11,16 +11,16 @@ export interface Tournoir
 export class Tournoir
 {
   id? : number;
-  date_debut? : Date;
-  date_fin? : Date;
+  dateDebut? : Date;
+  dateFin? : Date;
   nom? : string;
   equipe? : Equipe;
 
 
-    constructor(date_debut: Date,date_fin : Date,
+    constructor(dateDebut: Date,dateFin : Date,
       nom : string) {
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.nom = nom;
       }
 

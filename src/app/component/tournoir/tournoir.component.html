@@ -5,8 +5,8 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">id</th>
-          <th scope="col">date_debut</th>
-          <th scope="col">date_fin</th>
+          <th scope="col">dateDebut</th>
+          <th scope="col">dateFin</th>
           <th scope="col">nom</th>
           <th scope="col">equipe</th>
           <th scope="col" *ngIf="adminPermission">update</th>
@@ -17,8 +17,8 @@
 
         <tr>
           <th scope="row">{{tournoir.id}}</th>
-          <td>{{tournoir.date_debut}}</td>
-          <td>{{tournoir.date_fin}}</td>
+          <td>{{tournoir.dateDebut}}</td>
+          <td>{{tournoir.dateFin}}</td>
           <td>{{tournoir.nom}}</td>
           <td>{{tournoir.equipe?.nom}}</td>
           <td *ngIf="adminPermission"><a routerLink="/tournoir/detail/{{tournoir.id}}">update</a></td>
