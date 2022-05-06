@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from '././app-routing.module';
 import {HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -24,6 +23,12 @@ import { StadeDetailComponent } from './component/stade-detail/stade-detail.comp
 import { ArbitreDetailComponent } from './component/arbitre-detail/arbitre-detail.component';
 import { TournoirDetailComponent } from './component/tournoir-detail/tournoir-detail.component';
 import { JouerDetailComponent } from './component/jouer-detail/jouer-detail.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -52,8 +57,13 @@ import { JouerDetailComponent } from './component/jouer-detail/jouer-detail.comp
     FormsModule ,
     HttpClientModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTableModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
