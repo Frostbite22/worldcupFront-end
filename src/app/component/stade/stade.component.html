@@ -1,25 +1,46 @@
+<div class="mat-elevation-z8">
+  <h2><a routerLink="/stade/detail" *ngIf="adminPermission">Ajouter une stade</a></h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort class="demo-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades"> {{stade.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades"> {{stade.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="localisation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Localisation </mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades"> {{stade.localisation}} </mat-cell>
+    </ng-container>
+    <!-- Update Column -->
+    <ng-container matColumnDef="update" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades">
+        <a routerLink="/stade/detail/{{stade.id}}" class="btn btn-primary">update</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades">
+        <button type="button" class="btn btn-danger" (click)="deleteStade(stade.id!)">delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 
 
-  <h3><a routerLink="/stade/detail" *ngIf="adminPermission"> ajouter un stade</a></h3>
-  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">nom</th>
-          <th scope="col">localisation</th>
-          <th scope="col" *ngIf="adminPermission">update</th>
-          <th scope="col" *ngIf="adminPermission">delete</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let stade of stades">
-
-        <tr>
-          <th scope="row">{{stade.id}}</th>
-          <td>{{stade.nom}}</td>
-          <td>{{stade.localisation}}</td>
-          <td *ngIf="adminPermission"><a routerLink="/stade/detail/{{stade.id}}">update</a></td>
-          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteStade(stade.id!)">delete</button></td>
-        </tr>
-
-      </tbody>
-  </table>

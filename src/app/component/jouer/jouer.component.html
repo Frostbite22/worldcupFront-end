@@ -1,41 +1,90 @@
+<div class="mat-elevation-z8">
+  <h2><a routerLink="/joeur/detail" *ngIf="adminPermission">Ajouter une jouer</a></h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort class="demo-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let joeur of jouers"> {{joeur.id}} </mat-cell>
+    </ng-container>
 
+    <!-- Nom Column -->
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Age </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.age}} </mat-cell>
+    </ng-container>
 
-  <h3><a routerLink="/tournoir/detail" *ngIf="adminPermission"> ajouter un jouer</a></h3>
-  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">age</th>
-          <th scope="col">filiere</th>
-          <th scope="col">niveau</th>
-          <th scope="col">nom</th>
-          <th scope="col">numMaillot</th>
-          <th scope="col">poste</th>
-          <th scope="col">prenom</th>
-          <th scope="col">taille</th>
-          <th scope="col">equipe</th>
-          <th scope="col" *ngIf="adminPermission">update</th>
-          <th scope="col" *ngIf="adminPermission">delete</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let jouer of jouers">
+    <!-- Nom Column -->
+    <ng-container matColumnDef="filiere">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Filiere </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.filiere}} </mat-cell>
+    </ng-container>
 
-        <tr>
-          <th scope="row">{{jouer.id}}</th>
-          <td>{{jouer.age}}</td>
-          <td>{{jouer.filiere}}</td>
-          <td>{{jouer.niveau}}</td>
-          <td>{{jouer.nom}}</td>
-          <td>{{jouer.numMaillot}}</td>
-          <td>{{jouer.poste}}</td>
-          <td>{{jouer.prenom}}</td>
-          <td>{{jouer.taille}}</td>
-          <td>{{jouer.equipe?.nom}}</td>
-          <td *ngIf="adminPermission"><a routerLink="/jouer/detail/{{jouer.id}}">update</a></td>
-          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteJouer(jouer.id!)">delete</button></td>
-        </tr>
+    <!-- Nom Column -->
+    <ng-container matColumnDef="niveau">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.niveau}} </mat-cell>
+    </ng-container>
 
-      </tbody>
-    </table>
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="numMaillot">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> numMaillot </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.numMaillot}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="poste">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Poste </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.poste}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="prenom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.prenom}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="taille">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Taille </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.taille}} </mat-cell>
+    </ng-container>
+    <!-- Groupe Column -->
+    <ng-container matColumnDef="equipe">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of jouers"> {{jouer.equipe?.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container matColumnDef="update" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let jouer of jouers">
+        <a routerLink="/jouer/detail/{{jouer.id}}" class="btn btn-primary">update</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let jouer of jouers">
+        <button type="button" class="btn btn-danger" (click)="deleteJouer(jouer.id!)">delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 
 <app-equipe></app-equipe>
+
+

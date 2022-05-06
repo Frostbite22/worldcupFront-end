@@ -4,6 +4,8 @@
   justify-content: center;
   background-color: #ffffff;
   height: 100%;
+  margin: 50px;
+  border-radius: 20px;
 }
 .signup {
   width: 100%;

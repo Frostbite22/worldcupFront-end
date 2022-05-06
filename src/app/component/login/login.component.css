@@ -4,6 +4,8 @@
   justify-content: center;
   background-color: #ffffff;
   height: 100%;
+  margin: 50px;
+  border-radius: 20px;
 }
 .login {
   width: 100%;
@@ -22,7 +24,6 @@
   max-width: 400px;
   text-align: center;
 }
-
 .ancho {
   width: 80%;
 }

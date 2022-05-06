@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from '././service/token-storage.service';
 
+declare function myMethod(): any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -25,7 +26,7 @@ export class AppComponent {
      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
     }
-
+    //myMethod();
   }
   logout(): void {
     this.tokenStorageService.signOut();

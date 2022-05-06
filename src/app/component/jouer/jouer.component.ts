@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { JouerService } from '../../service/jouer.service';
 import { TokenStorageService } from '../../service/token-storage.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { Jouer } from '../../model/jouer';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,19 +22,27 @@ export class JouerComponent implements OnInit {
 
   jouers? : Jouer[] ;
   currentUser : any ;
-  adminPermission : boolean = false ;
+  adminPermission : boolean = false;
+  dataSource!: MatTableDataSource<Jouer>;
+  displayedColumns: string[] = ['id', 'age', 'filiere','niveau','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
+  displayedColumnsData: string[] = ['id', 'age', 'filiere','niveau','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
     this.getJouers() ;
     this.currentUser = this.token.getUser();
     this.adminPermission = this.permissions();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   getJouers() : void
   {
     this.jouerService.getJouers().subscribe(
       (response : Jouer[]) => {
-        this.jouers = response ;
+        this.jouers = response;
+        this.dataSource = new MatTableDataSource(this.jouers);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -56,6 +67,13 @@ export class JouerComponent implements OnInit {
     return this.currentUser.roles.includes("ROLE_ADMIN");
   }
 
+  logData(row: any) {
+    console.log(row);
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

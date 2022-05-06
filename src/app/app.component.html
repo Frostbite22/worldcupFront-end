@@ -1,42 +1,99 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">World Cup</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home</a>
-      </li>
-      <li class="nav-item" *ngIf="adminPermission">
-        <a href="/tournoirs" class="nav-link" routerLink="tournoirs">Tournoi</a>
-      </li>
-      <li class="nav-item" *ngIf="adminPermission">
-        <a href="/jouers" class="nav-link" routerLink="jouers">Jouer</a>
-      </li>
-      <li class="nav-item" *ngIf="adminPermission">
-        <a href="/matchs" class="nav-link" routerLink="matchs">Match</a>
-      </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ user.username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
-      </li>
-    </ul>
+  <nav class="sidebar">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <img src="./assets/worldcup-logo.png" alt="">
+            </span>
+
+            <div class="text logo-text">
+                <span class="name">WorldCup</span>
+                <span class="profession">Football</span>
+            </div>
+        </div>
+
+        <!--<i class='bx bx-chevron-right toggle'></i>-->
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="navbar-nav mr-auto" routerLinkActive="active">
+                <li class="nav-link">
+                    <a href="/home" routerLink="home">
+                        <i class='bx bx-home-alt icon' ></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="/tournoirs" routerLink="tournoirs">
+                        <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                        <span class="text nav-text">Tournoir</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="/jouers" routerLink="jouers">
+                        <i class='bx bx-user icon'></i>
+                        <span class="text nav-text">Jouer</span>
+                    </a>
+                </li>
+
+                <li class="nav-link" *ngIf="adminPermission">
+                    <a href="/marchs" routerLink="matchs">
+                        <i class='bx bx-pie-chart-alt icon' ></i>
+                        <span class="text nav-text">Match</span>
+                    </a>
+                </li>
+
+                <li class="nav-link" *ngIf="showAdminBoard">
+                    <a href="/admin" routerLink="admin">
+                        <i class='bx bx-heart icon' ></i>
+                        <span class="text nav-text">Admin Board</span>
+                    </a>
+                </li>
+
+                <li class="nav-link" *ngIf="showModeratorBoard">
+                    <a href="/mod" routerLink="mod">
+                        <i class='bx bx-wallet icon' ></i>
+                        <span class="text nav-text">Moderator Board</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="bottom-content" *ngIf="!isLoggedIn">
+          <li class="">
+              <a href="/register" routerLink="register">
+                  <i class='bx bx-user icon' ></i>
+                  <span class="text nav-text">Sign Up</span>
+              </a>
+          </li>
+          <li class="">
+              <a href="/login" routerLink="login">
+                  <i class='bx bx-user icon' ></i>
+                  <span class="text nav-text">Login</span>
+              </a>
+          </li>
+        </div>
+        <div class="bottom-content" *ngIf="isLoggedIn">
+            <li class="">
+                <a href="/profile" routerLink="profile">
+                    <i class='bx bx-user icon' ></i>
+                    <span class="text nav-text">{{ user.username }}</span>
+                </a>
+            </li>
+            <li class="">
+                <a href (click)="logout()">
+                    <i class='bx bx-log-out icon' ></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </li>
+
+        </div>
+    </div>
+
   </nav>
   <div class="container">
     <router-outlet></router-outlet>

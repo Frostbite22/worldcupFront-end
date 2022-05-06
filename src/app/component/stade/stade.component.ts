@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StadeService } from '../../service/stade.service';
 import { TokenStorageService } from '../../service/token-storage.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { Stade } from '../../model/stade';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,12 +22,19 @@ export class StadeComponent implements OnInit {
 
   stades? : Stade[] ;
   currentUser : any ;
-  adminPermission : boolean = false ;
+  adminPermission : boolean = false;
+  dataSource!: MatTableDataSource<Stade>;
+  displayedColumns: string[] = ['id', 'nom','localisation','update','delete'];
+  displayedColumnsData: string[] = ['id', 'nom','localisation','update','delete'];
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
     this.getStades() ;
     this.currentUser = this.token.getUser();
     this.adminPermission = this.permissions();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   getStades() : void
@@ -32,6 +42,7 @@ export class StadeComponent implements OnInit {
     this.stadeService.getStades().subscribe(
       (response : Stade[]) => {
         this.stades = response ;
+        this.dataSource = new MatTableDataSource(this.stades);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -56,6 +67,13 @@ export class StadeComponent implements OnInit {
     return this.currentUser.roles.includes("ROLE_ADMIN");
   }
 
+  logData(row: any) {
+    console.log(row);
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }
