@@ -29,6 +29,7 @@ export class EquipeDetailComponent implements OnInit {
   equipeForm = this.formBuilder.group(
     {
       nom : this.equipe?.nom,
+      drapeau : this.equipe?.drapeau,
       groupe : this.equipe?.groupe
     }
   ) ;

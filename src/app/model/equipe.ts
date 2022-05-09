@@ -18,5 +18,4 @@ export class Equipe
         this.nom = nom;
         this.drapeau = drapeau;
       }
-
 }

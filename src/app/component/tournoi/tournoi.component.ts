@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { tournoiService } from '../../service/tournoi.service';
+import { TournoiService } from '../../service/tournoi.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -16,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class TournoiComponent implements OnInit, AfterViewInit{
 
   constructor(
-    private tournoiService : tournoiService,
+    private tournoiService : TournoiService,
     private token : TokenStorageService ) { }
 
   tournois? : Tournoi[] ;
@@ -33,16 +33,16 @@ export class TournoiComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
-    this.gettournois() ;
+    this.getTournois() ;
     this.currentUser = this.token.getUser();
     this.adminPermission = this.permissions();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  gettournois() : void
+  getTournois() : void
   {
-    this.tournoiService.gettournois().subscribe(
+    this.tournoiService.getTournois().subscribe(
       (response : Tournoi[]) => {
         this.tournois = response;
         this.dataSource = new MatTableDataSource(this.tournois);
@@ -53,11 +53,11 @@ export class TournoiComponent implements OnInit, AfterViewInit{
     );
   }
 
-  public deletetournoi(id : number): void{
-    this.tournoiService.deletetournoi(id).subscribe(
+  public deleteTournoi(id : number): void{
+    this.tournoiService.deleteTournoi(id).subscribe(
       (response: void) => {
         console.log(response);
-        this.gettournois();
+        this.getTournois();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

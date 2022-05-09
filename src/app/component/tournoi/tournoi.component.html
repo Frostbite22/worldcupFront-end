@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <h2><a routerLink="/equipe/detail" *ngIf="adminPermission">Ajouter une tournoi</a></h2>
+  <h2><a routerLink="/tournoi/detail" *ngIf="adminPermission">Ajouter une tournoi</a></h2>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
   </mat-form-field>
@@ -42,7 +42,7 @@
     <ng-container matColumnDef="delete" *ngIf="adminPermission">
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <mat-cell *matCellDef="let tournoi of tournois">
-        <button type="button" class="btn btn-danger" (click)="deletetournoi(tournoi.id!)">delete</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTournoi(tournoi.id!)">delete</button>
       </mat-cell>
     </ng-container>
 

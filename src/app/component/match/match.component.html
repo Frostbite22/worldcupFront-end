@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <h2><a routerLink="/joeur/detail" *ngIf="adminPermission">Ajouter une match</a></h2>
+  <h2><a routerLink="/match/detail" *ngIf="adminPermission">Ajouter une match</a></h2>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
   </mat-form-field>
@@ -70,5 +70,6 @@
 
 <app-tournoi></app-tournoi>
 <app-stade></app-stade>
+<app-arbitre></app-arbitre>
 
 

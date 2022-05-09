@@ -18,14 +18,16 @@
 
     <!-- Prenom Column -->
     <ng-container matColumnDef="prenom">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> prenom </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </mat-header-cell>
       <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.prenom}} </mat-cell>
     </ng-container>
 
     <!-- Match Column -->
     <ng-container matColumnDef="match">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Match </mat-header-cell>
-      <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.match?.nomEquipe1}} VS {{arbitre.match?.nomEquipe2}} </mat-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres">
+        {{arbitre.match?.nomEquipe1.nom}} VS {{arbitre.match?.nomEquipe2.nom}}
+      </mat-cell>
     </ng-container>
 
     <!-- Update Column -->

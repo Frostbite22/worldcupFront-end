@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Groupe {\n  constructor(nom) {\n    this.nom = nom;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

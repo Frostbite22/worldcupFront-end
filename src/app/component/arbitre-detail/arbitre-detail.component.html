@@ -1,1 +1,63 @@
-<p>arbitre-detail works!</p>
+<br>
+<div class="container">
+    <div *ngIf="arbitre">
+            <form  [formGroup]="arbitreForm" (ngSubmit)="saveArbitre()">
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom" [(ngModel)]="arbitre.nom" formControlName="nom">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Prenom</mat-label>
+                    <input matInput id="prenom" [(ngModel)]="arbitre.prenom" formControlName="prenom">
+                  </mat-form-field>
+                </div>
+
+                  <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Match</mat-label>
+                      <mat-select id="match" formControlName="match" [(ngModel)]="arbitre.match">
+                        <mat-option [value]="match"
+                                          *ngFor="let match of matchs">{{match.nomEquipe1?.nom}} VS {{match.nomEquipe2?.nom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                      Save
+                    </button>
+                    <button class="btn btn-warning btn-block" type="submit" (click)="goBack()">
+                      Go back
+                    </button>
+                  </div>
+              </form>
+    </div>
+        <div *ngIf="arbitre ==undefined">
+            <form  [formGroup]="arbitreForm" (ngSubmit)="addArbitre(nom.value,prenom.value)">
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Nom</mat-label>
+                      <input matInput #nom id="nom" formControlName="nom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Prenom</mat-label>
+                      <input matInput #prenom id="prenom" formControlName="prenom">
+                    </mat-form-field>
+                  </div>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Ajouter une arbitre
+                  </button>
+            </form>
+        </div>
+    </div>
+

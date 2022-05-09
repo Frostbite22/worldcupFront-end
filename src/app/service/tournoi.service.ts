@@ -10,32 +10,32 @@ const httpOptions = { headers : new HttpHeaders({'Content-Type': 'application/js
 @Injectable({
   providedIn: 'root'
 })
-export class tournoiService {
+export class TournoiService {
 
   constructor(
     private http : HttpClient
   ) { }
 
-  gettournois(): Observable<Tournoi[]> {
+  getTournois(): Observable<Tournoi[]> {
     return this.http.get<Tournoi[]>(API_URL +'/tournoi',httpOptions);
   }
 
-  addTorunoir(tournoi : Tournoi) : Observable<Tournoi>
+  addTorunoi(tournoi : Tournoi) : Observable<Tournoi>
   {
     return this.http.post<Tournoi>(API_URL+'/tournoi',tournoi);
   }
 
-  gettournoi(id : number) : Observable<Tournoi>
+  getTournoi(id : number) : Observable<Tournoi>
   {
     return this.http.get<Tournoi>(API_URL+`/tournoi/${id}`,httpOptions) ;
   }
 
-  public updatetournoi(tournoi : Tournoi) : Observable<Tournoi>
+  public updateTournoi(tournoi : Tournoi) : Observable<Tournoi>
   {
     return this.http.put<Tournoi>(API_URL+'/tournoi',tournoi);
   }
 
-  public deletetournoi( id : number) : Observable<void>
+  public deleteTournoi( id : number) : Observable<void>
   {
     return this.http.delete<void>(API_URL+`/tournoi/${id}`);
   }

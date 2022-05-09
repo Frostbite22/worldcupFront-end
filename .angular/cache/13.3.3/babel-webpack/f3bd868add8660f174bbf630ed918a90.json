@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Equipe {\n  constructor(nom, drapeau) {\n    this.nom = nom;\n    this.drapeau = drapeau;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

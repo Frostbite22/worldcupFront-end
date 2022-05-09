@@ -14,15 +14,14 @@ import { GroupeComponent } from './component/groupe/groupe.component';
 import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.component';
 import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
 import { TournoiComponent } from './component/tournoi/tournoi.component';
-import { JouerComponent } from './component/jouer/jouer.component';
+import { JoueurComponent } from './component/joueur/joueur.component';
 import { ArbitreComponent } from './component/arbitre/arbitre.component';
 import { StadeComponent } from './component/stade/stade.component';
 import { MatchComponent } from './component/match/match.component';
 import { MatchDetailComponent } from './component/match-detail/match-detail.component';
 import { StadeDetailComponent } from './component/stade-detail/stade-detail.component';
 import { ArbitreDetailComponent } from './component/arbitre-detail/arbitre-detail.component';
-import { tournoiDetailComponent } from './component/tournoi-detail/tournoi-detail.component';
-import { JouerDetailComponent } from './component/jouer-detail/jouer-detail.component';
+import { TournoiDetailComponent } from './component/tournoi-detail/tournoi-detail.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -30,6 +29,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { JoueurDetailComponent } from './component/joueur-detail/joueur-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,15 +42,15 @@ import { MatSelectModule } from '@angular/material/select';
     EquipeDetailComponent,
     GroupeDetailComponent,
     TournoiComponent,
-    JouerComponent,
+    JoueurComponent,
     ArbitreComponent,
     StadeComponent,
     MatchComponent,
     MatchDetailComponent,
     StadeDetailComponent,
     ArbitreDetailComponent,
-    tournoiDetailComponent,
-    JouerDetailComponent
+    TournoiDetailComponent,
+    JoueurDetailComponent
   ],
   imports: [
     BrowserModule,

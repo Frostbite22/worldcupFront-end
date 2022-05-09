@@ -14,9 +14,7 @@ export class Tournoi
   nom? : string;
 
 
-    constructor(dateDebut: Date, dateFin : Date, nom : string) {
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+    constructor(nom : string) {
         this.nom = nom;
       }
 

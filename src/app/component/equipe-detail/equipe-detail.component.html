@@ -54,6 +54,17 @@
                     </mat-form-field>
                   </div>
                   </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Groupe</mat-label>
+                      <mat-select id="groupe" formControlName="groupe">
+                        <mat-option [value]="groupe"
+                                          *ngFor="let groupe of groupes">{{groupe.nom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  </div>
                   <button class="btn btn-primary btn-block" type="submit">
                     Ajouter une equipe
                   </button>
