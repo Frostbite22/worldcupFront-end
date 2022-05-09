@@ -5,7 +5,7 @@ import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { EquipeDetailComponent } from './component/equipe-detail/equipe-detail.component';
 import { GroupeDetailComponent } from './component/groupe-detail/groupe-detail.component';
-import { TournoirComponent } from './component/tournoir/tournoir.component';
+import { TournoiComponent } from './component/tournoi/tournoi.component';
 import { JouerComponent } from './component/jouer/jouer.component';
 import { MatchComponent } from './component/match/match.component';
 import { ArbitreComponent } from './component/arbitre/arbitre.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'equipe/detail/:id', component: EquipeDetailComponent },
   { path: 'groupe/detail', component: GroupeDetailComponent },
   { path: 'groupe/detail/:id', component: GroupeDetailComponent },
-  { path: 'tournoirs', component: TournoirComponent },
+  { path: 'tournois', component: TournoiComponent },
   { path: 'jouers', component: JouerComponent },
   { path: 'arbitres', component: ArbitreComponent },
   { path: 'matchs', component: MatchComponent },

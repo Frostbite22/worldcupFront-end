@@ -16,11 +16,20 @@
       <mat-cell *matCellDef="let stade of stades"> {{stade.nom}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- Localisation Column -->
     <ng-container matColumnDef="localisation">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Localisation </mat-header-cell>
       <mat-cell *matCellDef="let stade of stades"> {{stade.localisation}} </mat-cell>
     </ng-container>
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+      <mat-cell *matCellDef="let stade of stades">
+        <img src="{{stade.image}}"/>
+      </mat-cell>
+    </ng-container>
+
     <!-- Update Column -->
     <ng-container matColumnDef="update" *ngIf="adminPermission">
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>

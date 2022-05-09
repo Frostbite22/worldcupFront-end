@@ -5,8 +5,6 @@ export interface Arbitre
   id? : number;
   nom? : string;
   prenom? : string;
-  filiere? : string;
-  niveau? : string;
   match? : Match;
 }
 export class Arbitre
@@ -18,12 +16,9 @@ export class Arbitre
   niveau? : string;
   match? : Match;
 
-    constructor(nom: string,prenom : string, filiere: string,niveau: string) {
+    constructor(nom: string,prenom : string) {
         this.nom = nom;
         this.prenom = prenom;
-        this.niveau = niveau;
-        this.filiere = filiere;
-        this.niveau = niveau;
       }
 
 }

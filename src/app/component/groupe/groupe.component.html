@@ -1,5 +1,8 @@
 <div class="mat-elevation-z8">
   <h2><a routerLink="/groupe/detail" *ngIf="adminPermission">Ajouter une groupe</a></h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
   <mat-table [dataSource]="dataSource" matSort class="demo-table">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -8,9 +11,9 @@
     </ng-container>
 
     <!-- Nom Column -->
-    <ng-container matColumnDef="numero">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Numero </mat-header-cell>
-      <mat-cell *matCellDef="let groupe of groupes"> {{groupe.numero}} </mat-cell>
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let groupe of groupes"> {{groupe.nom}} </mat-cell>
     </ng-container>
 
     <!-- Update Column -->

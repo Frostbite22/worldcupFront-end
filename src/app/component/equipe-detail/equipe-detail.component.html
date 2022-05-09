@@ -3,43 +3,61 @@
     <div *ngIf="equipe">
             <form  [formGroup]="equipeForm" (ngSubmit)="saveEquipe()">
                 <div class="form-group row">
-                  <label for="nom" class="col-sm-2 col-form-label">nom</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nom" [(ngModel)]="equipe.nom" formControlName="nom">
-                  </div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom" [(ngModel)]="equipe.nom" formControlName="nom">
+                  </mat-form-field>
                 </div>
+
+
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Drapeau</mat-label>
+                    <input matInput id="drapeau" [(ngModel)]="equipe.drapeau" formControlName="drapeau">
+                  </mat-form-field>
+                </div>
+
                   <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="groupe">Groupes</label>
-                    </div>
-                    <select  class="custom-select" id="groupe" formControlName="groupe" [(ngModel)]="equipe.groupe">
-                        <option [ngValue]="groupe"
-                        *ngFor="let groupe of groupes"
-                        [selected]="groupe.id == equipe.groupe!.id" >{{groupe.numero}}</option>
-                    </select>
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Groupe</mat-label>
+                      <mat-select id="groupe" formControlName="groupe" [(ngModel)]="equipe.groupe">
+                        <mat-option [value]="groupe"
+                                          *ngFor="let groupe of groupes">{{groupe.nom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-
-
-                  <button class="button" type="submit">Save </button>
-
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                      Save
+                    </button>
+                    <button class="btn btn-warning btn-block" type="submit" (click)="goBack()">
+                      Go back
+                    </button>
+                  </div>
               </form>
     </div>
         <div *ngIf="equipe ==undefined">
-            <form  [formGroup]="equipeForm" (ngSubmit)="addEquipe(nom.value)">
+            <form  [formGroup]="equipeForm" (ngSubmit)="addEquipe(nom.value,drapeau.value)">
                 <div class="form-group row">
-                <label for="nom" class="col-sm-2 col-form-label">nom</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" #nom id="nom" formControlName="nom">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Nom</mat-label>
+                      <input matInput #nom id="nom" formControlName="nom">
+                    </mat-form-field>
+                  </div>
                 </div>
-                </div>
-
-                <button class="button" type="submit">ajouter une equipe </button>
-
-
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Drapeau</mat-label>
+                      <input matInput #drapeau id="drapeau" formControlName="drapeau">
+                    </mat-form-field>
+                  </div>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Ajouter une equipe
+                  </button>
             </form>
         </div>
-        <br>
-        <br>
-        <button type="button" (click)="goBack()">Go back</button>
     </div>
 

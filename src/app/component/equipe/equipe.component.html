@@ -16,10 +16,18 @@
       <mat-cell *matCellDef="let equipe of equipes"> {{equipe.nom}} </mat-cell>
     </ng-container>
 
+    <!-- Drapeau Column -->
+    <ng-container matColumnDef="drapeau">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Drapeau </mat-header-cell>
+      <mat-cell *matCellDef="let equipe of equipes">
+        <img src="{{equipe.drapeau}}"/>
+      </mat-cell>
+    </ng-container>
+
     <!-- Groupe Column -->
     <ng-container matColumnDef="groupe">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </mat-header-cell>
-      <mat-cell *matCellDef="let equipe of equipes"> {{equipe.groupe?.numero}} </mat-cell>
+      <mat-cell *matCellDef="let equipe of equipes"> {{equipe.groupe?.nom}} </mat-cell>
     </ng-container>
 
     <!-- Update Column -->

@@ -48,10 +48,9 @@ export class EquipeDetailComponent implements OnInit {
     this.equipeService.getEquipe(id).subscribe(equipe => this.equipe = equipe);
   }
 
-  addEquipe(nom :string) : void
+  addEquipe(nom :string,drapeau :string) : void
   {
-    let nEquipe: Equipe = new Equipe(nom);
-
+    let nEquipe: Equipe = new Equipe(nom,drapeau);
     this.equipeService.addEquipe(nEquipe)
     .subscribe(() => this.goBack());
   }

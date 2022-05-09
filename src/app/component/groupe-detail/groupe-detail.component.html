@@ -3,33 +3,35 @@
     <div *ngIf="groupe">
             <form  [formGroup]="equipeForm" (ngSubmit)="saveGroupe()">
                 <div class="form-group row">
-                  <label for="numero" class="col-sm-2 col-form-label">numero</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="libelle" [(ngModel)]="groupe.numero" formControlName="numero">
-                  </div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom" [(ngModel)]="groupe.nom" formControlName="nom">
+                  </mat-form-field>
                 </div>
-
-
-                  <button class="button" type="submit">Save </button>
-
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Save
+                  </button>
+                  <button class="btn btn-warning btn-block" type="submit" (click)="goBack()">
+                    Go back
+                  </button>
+                </div>
               </form>
-    </div>
-        <div *ngIf="groupe ==undefined">
-            <form  [formGroup]="equipeForm" (ngSubmit)="addGroupe(groupe.value)">
-                <div class="form-group row">
-                <label for="numero" class="col-sm-2 col-form-label">numero</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" #groupe id="numero" formControlName="numero">
-                </div>
-                </div>
-
-                <button class="button" type="submit">ajouter un domain </button>
-
-
-            </form>
+              </div>
+              <div *ngIf="groupe ==undefined">
+                <form  [formGroup]="equipeForm" (ngSubmit)="addGroupe(groupe.value)">
+                  <div class="form-group row">
+                    <div class="col-sm-10">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Numero</mat-label>
+                        <input matInput #groupe id="numero" formControlName="numero">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Ajouter un domaine
+                  </button>
+                </form>
         </div>
-        <br>
-        <br>
-        <button type="button" (click)="goBack()">Go back</button>
     </div>
 

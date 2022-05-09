@@ -1,15 +1,14 @@
 export interface Groupe
 {
   id?: number;
-  numero : number;
+  nom : string;
 }
 export class Groupe
 {
   id?: number;
-  numero: number;
+  nom: string;
 
-  constructor(numero: number) {
-    this.numero = numero;
-
+  constructor(nom: string) {
+    this.nom = nom;
   }
 }

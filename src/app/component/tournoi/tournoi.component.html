@@ -1,0 +1,53 @@
+<div class="mat-elevation-z8">
+  <h2><a routerLink="/equipe/detail" *ngIf="adminPermission">Ajouter une tournoi</a></h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort class="demo-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.id}} </mat-cell>
+    </ng-container>
+
+    <!-- DateDebut Column -->
+    <ng-container matColumnDef="dateDebut">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DateDebut </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.dateDebut.substring(0,10)}}</mat-cell>
+    </ng-container>
+
+
+    <!-- DateFin Column -->
+    <ng-container matColumnDef="dateFin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DateFin </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.dateFin.substring(0,10)}} </mat-cell>
+    </ng-container>
+
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container matColumnDef="update" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois">
+        <a routerLink="/tournoi/detail/{{tournoi.id}}" class="btn btn-primary">update</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois">
+        <button type="button" class="btn btn-danger" (click)="deletetournoi(tournoi.id!)">delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

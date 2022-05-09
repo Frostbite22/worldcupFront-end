@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { EquipeService } from '../../service/equipe.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './equipe.component.html',
   styleUrls: ['./equipe.component.css']
 })
-export class EquipeComponent implements OnInit {
+export class EquipeComponent implements OnInit, AfterViewInit{
 
   constructor(
     private equipeService : EquipeService,
@@ -22,10 +22,14 @@ export class EquipeComponent implements OnInit {
   currentUser : any ;
   adminPermission : boolean = false ;
   dataSource!: MatTableDataSource<Equipe>;
-  displayedColumns: string[] = ['id', 'nom', 'groupe','update','delete'];
-  displayedColumnsData: string[] = ['id', 'nom', 'groupe','update','delete'];
+  displayedColumns: string[] = ['id', 'nom', 'drapeau', 'groupe','update','delete'];
+  displayedColumnsData: string[] = ['id', 'nom', 'drapeau', 'groupe','update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.getEquipes() ;

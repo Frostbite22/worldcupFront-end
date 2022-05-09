@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { StadeService } from '../../service/stade.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,8 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./stade.component.css']
 })
 
-
-export class StadeComponent implements OnInit {
+export class StadeComponent implements OnInit, AfterViewInit{
 
   constructor(
     private stadeService : StadeService,
@@ -24,10 +23,14 @@ export class StadeComponent implements OnInit {
   currentUser : any ;
   adminPermission : boolean = false;
   dataSource!: MatTableDataSource<Stade>;
-  displayedColumns: string[] = ['id', 'nom','localisation','update','delete'];
-  displayedColumnsData: string[] = ['id', 'nom','localisation','update','delete'];
+  displayedColumns: string[] = ['id', 'nom','localisation','image', 'update','delete'];
+  displayedColumnsData: string[] = ['id', 'nom','localisation','image', 'update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.getStades() ;

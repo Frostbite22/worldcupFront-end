@@ -10,22 +10,16 @@
       <mat-cell *matCellDef="let joeur of jouers"> {{joeur.id}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- Age Column -->
     <ng-container matColumnDef="age">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Age </mat-header-cell>
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.age}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
-    <ng-container matColumnDef="filiere">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Filiere </mat-header-cell>
-      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.filiere}} </mat-cell>
-    </ng-container>
-
-    <!-- Nom Column -->
-    <ng-container matColumnDef="niveau">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
-      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.niveau}} </mat-cell>
+    <!-- Poids Column -->
+    <ng-container matColumnDef="poids">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Poids </mat-header-cell>
+      <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.poids}} </mat-cell>
     </ng-container>
 
     <!-- Nom Column -->
@@ -34,25 +28,25 @@
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.nom}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- numMaillot Column -->
     <ng-container matColumnDef="numMaillot">
       <mat-header-cell *matHeaderCellDef mat-sort-header> numMaillot </mat-header-cell>
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.numMaillot}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- Poste Column -->
     <ng-container matColumnDef="poste">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Poste </mat-header-cell>
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.poste}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- Prenom Column -->
     <ng-container matColumnDef="prenom">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </mat-header-cell>
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.prenom}} </mat-cell>
     </ng-container>
 
-    <!-- Nom Column -->
+    <!-- Taille Column -->
     <ng-container matColumnDef="taille">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Taille </mat-header-cell>
       <mat-cell *matCellDef="let jouer of joeurs"> {{jouer.taille}} </mat-cell>

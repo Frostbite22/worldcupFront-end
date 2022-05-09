@@ -4,8 +4,7 @@ export interface Jouer
 {
   id? : number;
   age? : number;
-  filiere? : string;
-  niveau? : number;
+  poids? : string;
   nom? : string;
   numMaillot? : number;
   poste? : string;
@@ -17,20 +16,18 @@ export class Jouer
 {
   id? : number;
   age? : number;
-  filiere? : string;
-  niveau? : number;
+  poids? : string;
   nom? : string;
-  num_maillot? : number;
+  numMaillot? : number;
   poste? : string;
   prenom? : string;
   taille? : number;
   equipe? : Equipe;
 
-    constructor(age: number,filiere : string, niveau: number,nom: string, numMaillot: number, poste: string, prenom: string,
+    constructor(age: number,poids : string,nom: string, numMaillot: number, poste: string, prenom: string,
       taille : number) {
         this.age = age;
-        this.filiere = filiere;
-        this.niveau = niveau;
+        this.poids = poids;
         this.nom = nom;
         this.numMaillot = numMaillot;
         this.poste = poste;

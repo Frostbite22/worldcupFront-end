@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatchService } from '../../service/match.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './match.component.html',
   styleUrls: ['./match.component.css']
 })
-export class MatchComponent implements OnInit {
+export class MatchComponent implements OnInit, AfterViewInit{
 
   constructor(
     private matchService : MatchService,
@@ -23,10 +23,14 @@ export class MatchComponent implements OnInit {
   currentUser : any ;
   adminPermission : boolean = false ;
   dataSource!: MatTableDataSource<Match>;
-  displayedColumns: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoir','stade','equipe','update','delete'];
-  displayedColumnsData: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoir','stade','equipe','update','delete'];
+  displayedColumns: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','update','delete'];
+  displayedColumnsData: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.getMatchs() ;

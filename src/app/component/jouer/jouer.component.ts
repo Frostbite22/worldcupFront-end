@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { JouerService } from '../../service/jouer.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 
-export class JouerComponent implements OnInit {
+export class JouerComponent implements OnInit, AfterViewInit{
 
   constructor(
     private jouerService : JouerService,
@@ -24,10 +24,14 @@ export class JouerComponent implements OnInit {
   currentUser : any ;
   adminPermission : boolean = false;
   dataSource!: MatTableDataSource<Jouer>;
-  displayedColumns: string[] = ['id', 'age', 'filiere','niveau','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
-  displayedColumnsData: string[] = ['id', 'age', 'filiere','niveau','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
+  displayedColumns: string[] = ['id', 'age', 'poids','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
+  displayedColumnsData: string[] = ['id', 'age', 'poids','nom','numMaillot','poste', 'prenom', 'taille', 'equipe','update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.getJouers() ;

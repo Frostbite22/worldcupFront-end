@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { GroupeService } from '../../service/groupe.service';
 import { TokenStorageService } from '../../service/token-storage.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-
 import { Groupe } from '../../model/groupe';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -14,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './groupe.component.html',
   styleUrls: ['./groupe.component.css']
 })
-export class GroupeComponent implements OnInit {
+export class GroupeComponent implements OnInit, AfterViewInit{
 
   constructor(
     private groupeService : GroupeService,
@@ -24,10 +23,14 @@ export class GroupeComponent implements OnInit {
   currentUser : any ;
   adminPermission : boolean = false ;
   dataSource!: MatTableDataSource<Groupe>;
-  displayedColumns: string[] = ['id', 'numero','update','delete'];
-  displayedColumnsData: string[] = ['id', 'numero','update','delete'];
+  displayedColumns: string[] = ['id', 'nom','update','delete'];
+  displayedColumnsData: string[] = ['id', 'nom','update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -70,6 +73,11 @@ export class GroupeComponent implements OnInit {
 
   logData(row: any) {
     console.log(row);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

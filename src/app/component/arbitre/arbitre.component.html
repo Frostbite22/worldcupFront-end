@@ -1,32 +1,54 @@
+<div class="mat-elevation-z8">
+  <h2><a routerLink="/arbitre/detail" *ngIf="adminPermission">Ajouter une arbitre</a></h2>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort class="demo-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- Prenom Column -->
+    <ng-container matColumnDef="prenom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> prenom </mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.prenom}} </mat-cell>
+    </ng-container>
+
+    <!-- Match Column -->
+    <ng-container matColumnDef="match">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Match </mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres"> {{arbitre.match?.nomEquipe1}} VS {{arbitre.match?.nomEquipe2}} </mat-cell>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container matColumnDef="update" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres">
+        <a routerLink="/arbitre/detail/{{arbitre.id}}" class="btn btn-primary">update</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete" *ngIf="adminPermission">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let arbitre of arbitres">
+        <button type="button" class="btn btn-danger" (click)="deleteArbitre(arbitre.id!)">delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 
 
-  <h3><a routerLink="/arbitre/detail" *ngIf="adminPermission"> ajouter un arbitre</a></h3>
-  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">nom</th>
-          <th scope="col">prenom</th>
-          <th scope="col">filiere</th>
-          <th scope="col">niveau</th>
-          <th scope="col">match</th>
-          <th scope="col" *ngIf="adminPermission">update</th>
-          <th scope="col" *ngIf="adminPermission">delete</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let arbitre of arbitres">
-
-        <tr>
-          <th scope="row">{{arbitre.id}}</th>
-          <td>{{arbitre.nom}}</td>
-          <td>{{arbitre.prenom}}</td>
-          <td>{{arbitre.filiere}}</td>
-          <td>{{arbitre.niveau}}</td>
-          <td>{{arbitre.match?.nomEquipe1}}</td>
-          <td *ngIf="adminPermission"><a routerLink="/arbitre/detail/{{arbitre.id}}">update</a></td>
-          <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteArbitre(arbitre.id!)">delete</button></td>
-        </tr>
-
-      </tbody>
-    </table>
 

@@ -23,7 +23,7 @@ export class GroupeDetailComponent implements OnInit {
   equipeForm = this.formBuilder.group(
     {
       id : this.groupe?.id,
-      numero : this.groupe?.numero,
+      nom : this.groupe?.nom,
     }
   ) ;
   ngOnInit(): void {
@@ -41,10 +41,10 @@ export class GroupeDetailComponent implements OnInit {
     this.groupeService.getGroupe(id).subscribe(groupe => this.groupe = groupe);
   }
 
-  addGroupe(numero :string) : void
+  addGroupe(nom :string) : void
   {
-    var number=Number(numero);
-    let nGroupe: Groupe = new Groupe(number);
+    var nom=String(nom);
+    let nGroupe: Groupe = new Groupe(nom);
 
     this.groupeService.addGroupe(nGroupe)
     .subscribe(() => this.goBack()) ;
