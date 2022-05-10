@@ -58,18 +58,18 @@
     </ng-container>
 
     <!-- Update Column -->
-    <ng-container matColumnDef="update" *ngIf="adminPermission">
+    <ng-container matColumnDef="update" >
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <mat-cell *matCellDef="let joueur of joueurs">
-        <a routerLink="/joueur/detail/{{joueur.id}}" class="btn btn-primary">update</a>
+        <a routerLink="/joueur/detail/{{joueur.id}}" *ngIf="adminPermission" class="btn btn-primary">update</a>
       </mat-cell>
     </ng-container>
 
     <!-- Delete Column -->
-    <ng-container matColumnDef="delete" *ngIf="adminPermission">
+    <ng-container matColumnDef="delete" >
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <mat-cell *matCellDef="let joueur of joueurs">
-        <button type="button" class="btn btn-danger" (click)="deleteJoueur(joueur.id!)">delete</button>
+        <button type="button" class="btn btn-danger"  *ngIf="adminPermission" (click)="deleteJoueur(joueur.id!)">delete</button>
       </mat-cell>
     </ng-container>
 
