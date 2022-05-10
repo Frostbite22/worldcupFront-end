@@ -10,7 +10,8 @@ export class RegisterComponent implements OnInit {
   logo = '././assets/worldcup-logo.png'
   form : any = {
     username : null,
-    password : null
+    password : null,
+    email : null 
   };
   isSuccessful = false ;
   isSignUpFailed = false ;
@@ -24,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() : void
   {
-    const {username , password } = this.form ;
-    this.authService.register(username,password).subscribe(
+    const {username , password, email } = this.form ;
+    this.authService.register(username,password,email).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
