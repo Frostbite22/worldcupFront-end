@@ -4,8 +4,8 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 185px;
-    padding: 10px 14px;
+    width: 14%;
+    padding: 10px 13px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
@@ -261,4 +261,9 @@ body.dark .switch::before{
 }
 body.dark .home .text{
     color: var(--text-color);
+}
+
+.row 
+{
+    max-width: 100%;
 }
