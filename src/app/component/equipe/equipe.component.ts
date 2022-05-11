@@ -34,7 +34,7 @@ export class EquipeComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.getEquipes() ;
     this.currentUser = this.token.getUser();
-  //  this.adminPermission = this.permissions();
+    this.adminPermission = this.permissions();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -64,10 +64,10 @@ export class EquipeComponent implements OnInit, AfterViewInit{
     );
   }
 
-  /*public permissions(): boolean
+  public permissions(): boolean
   {
     return this.currentUser.roles.includes("ROLE_ADMIN");
-  }*/
+  }
 
   logData(row: any) {
     console.log(row);

@@ -1,1 +1,65 @@
-<p>stade-detail works!</p>
+<br>
+<div class="container">
+    <div *ngIf="stade">
+            <form  [formGroup]="stadeForm" (ngSubmit)="saveStade()">
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom" [(ngModel)]="stade.nom" formControlName="nom">
+                  </mat-form-field>
+                  <div class="form-group row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Localisation</mat-label>
+                      <input matInput id="localisation" [(ngModel)]="stade.localisation" formControlName="localisation">
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>image</mat-label>
+                      <input matInput id="image" [(ngModel)]="stade.image" formControlName="image">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Save
+                  </button>
+                  <button class="btn btn-warning btn-block" type="submit" (click)="goBack()">
+                    Go back
+                  </button>
+                </div>
+              </form>
+    </div>
+        <div *ngIf="stade ==undefined">
+            <form  [formGroup]="stadeForm" (ngSubmit)="addStade(nom.value,localisation.value,image.value)">
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Nom</mat-label>
+                      <input matInput #nom id="nom" formControlName="nom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Localisation</mat-label>
+                      <input matInput #localisation id="localisation" formControlName="localisation">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Image</mat-label>
+                      <input matInput #image id="image" formControlName="image">
+                    </mat-form-field>
+                  </div>
+                </div>
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Ajouter une equipe
+                  </button>
+            </form>
+        </div>
+    </div>
+

@@ -2,8 +2,8 @@
 export interface Tournoi
 {
   id? : number;
-  date_debut? : Date;
-  date_fin? : Date;
+  dateDebut? : Date;
+  dateFin? : Date;
   nom? : string;
 }
 export class Tournoi

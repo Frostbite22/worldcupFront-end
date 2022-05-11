@@ -23,8 +23,8 @@ export class TournoiComponent implements OnInit, AfterViewInit{
   currentUser : any ;
   adminPermission : boolean = false ;
   dataSource!: MatTableDataSource<Tournoi>;
-  displayedColumns: string[] = ['id', 'dateDebut', 'dateFin','nom', 'update', 'delete'];
-  displayedColumnsData: string[] = ['id', 'dateDebut', 'dateFin','nom', 'update', 'delete'];
+  displayedColumns: string[] = ['id','nom', 'dateDebut', 'dateFin', 'update', 'delete'];
+  displayedColumnsData: string[] = ['id','nom', 'dateDebut', 'dateFin', 'update', 'delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

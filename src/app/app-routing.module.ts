@@ -14,7 +14,10 @@ import { StadeDetailComponent } from './component/stade-detail/stade-detail.comp
 import { MatchDetailComponent } from './component/match-detail/match-detail.component';
 import { TournoiDetailComponent } from './component/tournoi-detail/tournoi-detail.component';
 import { ArbitreDetailComponent } from './component/arbitre-detail/arbitre-detail.component';
-import { JoueurDetailComponent } from "./component/joueur-detail/joueur-detail.component";
+import { JoueurDetailComponent } from './component/joueur-detail/joueur-detail.component';
+import { UserComponent } from './component/user/user.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { RoleDetailComponent } from './component/role-detail/role-detail.component';
 
 
 
@@ -42,6 +45,11 @@ const routes: Routes = [
   { path: 'arbitres', component: ArbitreComponent },
   { path: 'matchs', component: MatchComponent },
   { path: 'stades', component: StadeComponent },
+  { path: 'users', component: UserComponent },
+  { path: 'user/detail', component: UserDetailComponent },
+  { path: 'user/detail/:id', component: UserDetailComponent },
+  { path: 'role/detail', component: RoleDetailComponent },
+  { path: 'role/detail/:id', component: RoleDetailComponent }
 ];
 
 @NgModule({

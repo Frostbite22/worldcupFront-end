@@ -22,9 +22,8 @@ export class Match
   tournoi?: Tournoi;
   stade?: Stade;
 
-    constructor(resultat: string, date: Date) {
+    constructor(resultat: string) {
         this.resultat = resultat;
-        this.date = date;
       }
 
 }

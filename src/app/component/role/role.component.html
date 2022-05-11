@@ -1,0 +1,22 @@
+<h3><a routerLink="/role/detail" *ngIf="adminPermission"> ajouter un role</a></h3>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col" *ngIf="adminPermission">update</th>
+        <th scope="col" *ngIf="adminPermission">delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let role of roles">
+
+      <tr>
+        <th scope="row">{{role.id}}</th>
+        <td>{{role.name}}</td>
+        <td *ngIf="adminPermission"><a routerLink="/role/detail/{{role.id}}">update</a></td>
+        <td *ngIf="adminPermission"><button type="button" class="btn btn-danger" (click)="deleteRole(role.id!)">delete</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+

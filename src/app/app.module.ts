@@ -27,9 +27,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { JoueurDetailComponent } from './component/joueur-detail/joueur-detail.component';
+import { UserComponent } from './component/user/user.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { RoleComponent } from './component/role/role.component';
+import { RoleDetailComponent } from './component/role-detail/role-detail.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,11 @@ import { JoueurDetailComponent } from './component/joueur-detail/joueur-detail.c
     StadeDetailComponent,
     ArbitreDetailComponent,
     TournoiDetailComponent,
-    JoueurDetailComponent
+    JoueurDetailComponent,
+    UserComponent,
+    UserDetailComponent,
+    RoleComponent,
+    RoleDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,9 @@ import { JoueurDetailComponent } from './component/joueur-detail/joueur-detail.c
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

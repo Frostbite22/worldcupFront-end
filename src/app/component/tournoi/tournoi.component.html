@@ -10,24 +10,26 @@
       <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.id}} </mat-cell>
     </ng-container>
 
-    <!-- DateDebut Column -->
-    <ng-container matColumnDef="dateDebut">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> DateDebut </mat-header-cell>
-      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.dateDebut.substring(0,10)}}</mat-cell>
-    </ng-container>
-
-
-    <!-- DateFin Column -->
-    <ng-container matColumnDef="dateFin">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> DateFin </mat-header-cell>
-      <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.dateFin.substring(0,10)}} </mat-cell>
-    </ng-container>
-
-
     <!-- Nom Column -->
     <ng-container matColumnDef="nom">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
       <mat-cell *matCellDef="let tournoi of tournois"> {{tournoi.nom}} </mat-cell>
+    </ng-container>
+
+    <!-- DateDebut Column -->
+    <ng-container matColumnDef="dateDebut">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DateDebut </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois">
+        {{tournoi.dateDebut}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- DateFin Column -->
+    <ng-container matColumnDef="dateFin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DateFin </mat-header-cell>
+      <mat-cell *matCellDef="let tournoi of tournois">
+        {{tournoi.dateFin}}
+      </mat-cell>
     </ng-container>
 
     <!-- Update Column -->

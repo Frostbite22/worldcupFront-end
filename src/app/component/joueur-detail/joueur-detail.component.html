@@ -1,1 +1,142 @@
-<p>joueur-detail works!</p>
+<br>
+<div class="container">
+    <div *ngIf="joueur">
+            <form  [formGroup]="joueurForm" (ngSubmit)="saveJoueur()">
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="nom" [(ngModel)]="joueur.nom" formControlName="nom">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Age</mat-label>
+                    <input matInput id="age" [(ngModel)]="joueur.age" formControlName="age">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Poids</mat-label>
+                    <input matInput id="poids" [(ngModel)]="joueur.poids" formControlName="poids">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>NumMaillot</mat-label>
+                    <input matInput id="numMaillot" [(ngModel)]="joueur.numMaillot" formControlName="numMaillot">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Poste</mat-label>
+                    <input matInput id="poste" [(ngModel)]="joueur.poste" formControlName="poste">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Prenom</mat-label>
+                    <input matInput id="prenom" [(ngModel)]="joueur.prenom" formControlName="prenom">
+                  </mat-form-field>
+                </div>
+                <div class="form-group row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Taille</mat-label>
+                    <input matInput id="taille" [(ngModel)]="joueur.taille" formControlName="taille">
+                  </mat-form-field>
+                </div>
+                  <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Equipe</mat-label>
+                      <mat-select id="equipe" formControlName="equipe" [(ngModel)]="joueur.equipe">
+                        <mat-option [value]="equipe"
+                                          *ngFor="let equipe of equipes">{{equipe.nom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                      Save
+                    </button>
+                    <button class="btn btn-warning btn-block" type="submit" (click)="goBack()">
+                      Go back
+                    </button>
+                  </div>
+              </form>
+    </div>
+        <div *ngIf="joueur ==undefined">
+            <form  [formGroup]="joueurForm" (ngSubmit)="addJoueur(age.value,poids.value,nom.value,numMaillot.value,
+            poste.value,prenom.value,taille.value)">
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Nom</mat-label>
+                      <input matInput #nom id="nom" formControlName="nom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>age</mat-label>
+                      <input numberOnly matInput #age id="age" formControlName="age">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>poids</mat-label>
+                      <input matInput #poids id="poids" formControlName="poids">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>numMaillot</mat-label>
+                      <input numberOnly matInput #numMaillot id="numMaillot" formControlName="numMaillot">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>poste</mat-label>
+                      <input matInput #poste id="poste" formControlName="poste">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>prenom</mat-label>
+                      <input matInput #prenom id="prenom" formControlName="prenom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                      <mat-label>taille</mat-label>
+                      <input numberOnly matInput #taille id="taille" formControlName="taille">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Equipe</mat-label>
+                      <mat-select id="equipe" formControlName="equipe">
+                        <mat-option [value]="equipe"
+                                          *ngFor="let equipe of equipes">{{equipe.nom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Ajouter une equipe
+                  </button>
+            </form>
+        </div>
+    </div>
+

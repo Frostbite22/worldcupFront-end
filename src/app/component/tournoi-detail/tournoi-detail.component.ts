@@ -43,11 +43,14 @@ export class TournoiDetailComponent implements OnInit {
     this.tournoiService.getTournoi(id).subscribe(tournoi => this.tournoi = tournoi);
   }
 
-  addTournoi(nom :string) : void
+  addTournoi(
+
+    nom : string
+  ) : void
   {
     let nTournoi: Tournoi = new Tournoi(nom);
     this.tournoiService.addTorunoi(nTournoi)
-    .subscribe(() => this.goBack());
+    .subscribe(() => this.goBack()) ;
   }
 
 
