@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Equipe } from '../model/equipe';
+import { Predict } from '../model/predict';
 
 const API_URL = 'http://localhost:8090';
+
 const httpOptions = { headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
 
@@ -39,5 +41,6 @@ export class EquipeService {
   {
     return this.http.delete<void>(API_URL+`/equipe/${id}`);
   }
+
 
 }

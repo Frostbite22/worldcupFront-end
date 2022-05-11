@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Match } from '../model/match';
+import { Predict } from '../model/predict';
 
 const API_URL = 'http://localhost:8090';
+const API_URL_PREDICT = 'http://localhost:5000';
+
 const httpOptions = { headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
 
@@ -39,5 +42,11 @@ export class MatchService {
   {
     return this.http.delete<void>(API_URL+`/match/${id}`);
   }
+
+  public predict(predict : Predict): Observable<Predict>
+  {
+
+    return this.http.post<Predict>(API_URL_PREDICT+'/predict',predict);
+  } 
 
 }

@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Equipe } from '../../model/equipe';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Predict } from 'src/app/model/predict';
 
 @Component({
   selector: 'app-equipe',
@@ -77,5 +78,7 @@ export class EquipeComponent implements OnInit, AfterViewInit{
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+
 
 }

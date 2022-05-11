@@ -13,19 +13,19 @@
     <!-- nomEquipe1 Column -->
     <ng-container matColumnDef="nomEquipe1">
       <mat-header-cell *matHeaderCellDef mat-sort-header> nomEquipe1 </mat-header-cell>
-      <mat-cell *matCellDef="let match of matchs"> {{match.nomEquipe1?.nom}} </mat-cell>
+      <mat-cell *matCellDef="let match of matchs"> {{match.nomEquipe1?.nom}}</mat-cell>
     </ng-container>
 
     <!-- nomEquipe2 Column -->
     <ng-container matColumnDef="nomEquipe2">
       <mat-header-cell *matHeaderCellDef mat-sort-header> nomEquipe2 </mat-header-cell>
-      <mat-cell *matCellDef="let match of matchs"> {{match.nomEquipe2?.nom}} </mat-cell>
+      <mat-cell *matCellDef="let match of matchs"> {{match.nomEquipe2?.nom}}</mat-cell>
     </ng-container>
 
     <!-- Resultat Column -->
     <ng-container matColumnDef="resultat">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Resultat </mat-header-cell>
-      <mat-cell *matCellDef="let match of matchs"> {{match.resultat}} </mat-cell>
+      <mat-cell *matCellDef="let match of matchs"> {{match.resultat}}</mat-cell>
     </ng-container>
 
     <!-- Date Column -->
@@ -45,6 +45,17 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header> Stade </mat-header-cell>
       <mat-cell *matCellDef="let match of matchs"> {{match.stade?.nom}} </mat-cell>
     </ng-container>
+
+    
+    <!--Predict -->
+    <ng-container matColumnDef="predict">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let match of matchs">
+        <button type="button" class="btn btn-info" (click)="predict(match.nomEquipe1?.nom!,match.nomEquipe2?.nom!)">Predict</button>
+       
+      </mat-cell>
+    </ng-container>
+
 
     <!-- Update Column -->
     <ng-container matColumnDef="update" *ngIf="adminPermission">

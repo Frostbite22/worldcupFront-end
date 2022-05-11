@@ -1,6 +1,6 @@
-<div class="row" *ngIf="adminPermission">
+<div class="row">
   <div class="col col-md-7">
-    <h3><a routerLink="/user/detail" > ajouter un utilisateur</a></h3>
+    <h3><a routerLink="/user/detail"  *ngIf="adminPermission"> ajouter un utilisateur</a></h3>
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -17,22 +17,14 @@
         <th scope="row">{{user.id}}</th>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
-        <td><a routerLink="/user/detail/{{user.id}}">update</a></td>
-        <td><button type="button" class="btn btn-danger" (click)="deleteUser(user.id!)">delete</button></td>
+        <td><a routerLink="/user/detail/{{user.id}}" *ngIf="adminPermission">update</a></td>
+        <td><button type="button" class="btn btn-danger" *ngIf="adminPermission" (click)="deleteUser(user.id!)">delete</button></td>
       </tr>
     </tbody>
   </table>
   </div>
   <div class="col col-md-5">
     <app-role></app-role>
-  </div>
-</div>
-<div *ngIf="!adminPermission">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Authorization Required</h1>
-      <p class="lead">This resource need admin authorizations !</p>
-    </div>
   </div>
 </div>
 

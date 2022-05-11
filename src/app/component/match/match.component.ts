@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Match } from '../../model/match';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Predict } from 'src/app/model/predict';
 
 @Component({
   selector: 'app-match',
@@ -22,9 +23,11 @@ export class MatchComponent implements OnInit, AfterViewInit{
   matchs? : Match[] ;
   currentUser : any ;
   adminPermission : boolean = false ;
+  team_1_predict? : string ;
+  team_2_predict? : string ;
   dataSource!: MatTableDataSource<Match>;
-  displayedColumns: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','update','delete'];
-  displayedColumnsData: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','update','delete'];
+  displayedColumns: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','predict','update','delete'];
+  displayedColumnsData: string[] = ['id', 'nomEquipe1','nomEquipe2','resultat','date','tournoi','stade','predict','update','delete'];
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -77,6 +80,23 @@ export class MatchComponent implements OnInit, AfterViewInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public predict(team_1 : string , team_2 : string)
+  {
+      let nPredict = new Predict(team_1,team_2)
+      this.matchService.predict(nPredict)
+      .subscribe(
+        (response: any) => {
+          alert(team_1 + ":" + response[team_1] +"-" + response[team_2]+ ":" + team_2 ) 
+
+
+          
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
   }
 
 }
