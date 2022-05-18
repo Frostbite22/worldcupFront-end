@@ -58,7 +58,7 @@
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ roles }}.
     </div>
-    <div class="center">
+    <div class="center" *ngIf="!isLoggedIn">
       <h4 class="h4 mb-4 fw-normal">Don't have an account yet?
         <a href="/register" class="nav-link">Register now</a>
       </h4>

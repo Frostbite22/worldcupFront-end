@@ -20,7 +20,7 @@
     <ng-container matColumnDef="dateDebut">
       <mat-header-cell *matHeaderCellDef mat-sort-header> DateDebut </mat-header-cell>
       <mat-cell *matCellDef="let tournoi of tournois">
-        {{tournoi.dateDebut}}
+        {{tournoi.dateDebut | date:'short' }}
       </mat-cell>
     </ng-container>
 
@@ -28,7 +28,7 @@
     <ng-container matColumnDef="dateFin">
       <mat-header-cell *matHeaderCellDef mat-sort-header> DateFin </mat-header-cell>
       <mat-cell *matCellDef="let tournoi of tournois">
-        {{tournoi.dateFin}}
+        {{tournoi.dateFin | date:'short' }}
       </mat-cell>
     </ng-container>
 
